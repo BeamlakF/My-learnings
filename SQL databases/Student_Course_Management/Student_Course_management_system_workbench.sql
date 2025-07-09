@@ -14,7 +14,7 @@ CREATE TABLE Courses(
     course_description VARCHAR(100),
     credits INT CHECK (credits BETWEEN 1 AND 6),
     capacity INT CHECK (Capacity<10));
-    
+
 CREATE TABLE Enrollments(
     enrollments_id INT AUTO_INCREMENT PRIMARY KEY,
     Student_id INT,
@@ -31,8 +31,12 @@ VALUES
 INSERT INTO Courses (course_name, course_description, credits, capacity)
 VALUES 
 ("Database", "Learn SQL", 3, 8),
+("Discreet", 3, 10),
 ("AI", "Using Python", 4, 9);
+
 INSERT INTO Enrollments (Student_id, Course_id)
 VALUES 
 (1, 2),
+(1,3),
 (2, 2);
+

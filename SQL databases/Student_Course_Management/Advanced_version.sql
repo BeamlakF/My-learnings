@@ -43,3 +43,27 @@ RIGHT JOIN Courses c ON e.course_id = c.course_id
 ORDER BY student_name;
 
 
+SELECT s.name, s.student_id
+FROM Students s
+JOIN Enrollments e ON s.student_id = e.student_id
+WHERE e.course_id IN (
+    SELECT course_id
+    FROM Courses
+    WHERE credits > 7
+);
+
+
+
+SELECT c.course_name, c.course_id, COUNT(e.student_id) AS enrollment_count
+FROM Courses c
+JOIN Enrollments e ON c.course_id = e.course_id
+GROUP BY c.course_name, c.course_id
+HAVING COUNT(e.student_id) > (
+    SELECT AVG(num_students)
+    FROM (
+        SELECT course_id, COUNT(student_id) AS num_students
+        FROM Enrollments
+        GROUP BY course_id
+    ) AS course_counts
+);
+
