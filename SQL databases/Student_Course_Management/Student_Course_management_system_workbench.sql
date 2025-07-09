@@ -14,6 +14,7 @@ CREATE TABLE Courses(
     course_description VARCHAR(100),
     credits INT CHECK (credits BETWEEN 1 AND 6),
     capacity INT CHECK (Capacity<10));
+    
 CREATE TABLE Enrollments(
     enrollments_id INT AUTO_INCREMENT PRIMARY KEY,
     Student_id INT,
