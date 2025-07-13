@@ -67,3 +67,16 @@ HAVING COUNT(e.student_id) > (
     ) AS course_counts
 );
 
+SELECT s.name, s.student_id, COUNT(*) AS total_courses
+FROM Enrollments e
+JOIN Students s ON e.student_id = s.student_id
+GROUP BY s.student_id, s.name;
+
+SELECT 
+  c.course_name,
+  c.course_id,
+  COUNT(*) AS total_students,
+  RANK() OVER (ORDER BY COUNT(*) DESC) AS course_rank
+FROM Enrollments e
+JOIN Courses c ON e.course_id = c.course_id
+GROUP BY c.course_id, c.course_name;
