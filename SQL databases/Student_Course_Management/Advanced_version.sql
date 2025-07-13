@@ -80,3 +80,9 @@ SELECT
 FROM Enrollments e
 JOIN Courses c ON e.course_id = c.course_id
 GROUP BY c.course_id, c.course_name;
+
+EXPLAIN
+SELECT s.name, COUNT(*) AS total_courses
+FROM Enrollments e
+JOIN Students s ON e.student_id = s.student_id
+GROUP BY s.student_id, s.name;
