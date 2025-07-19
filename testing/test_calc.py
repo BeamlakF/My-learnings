@@ -1,9 +1,7 @@
-from .calc import add 
-from .calc import multiply
-from .calc import division
-from .calc import subtract
-from calc import Testing  
+from calc import Testing
 import unittest
+
+
 
 class TestCalc(unittest.TestCase):
     def test_add(self):
