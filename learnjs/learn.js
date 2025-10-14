@@ -1,6 +1,6 @@
-const input = document.getElementById('task-input');
-const addBtn = document.getElementById('add-btn');
-const list = document.getElementById('task-list');
+const input = document.getElementById('taskInput');
+const addBtn = document.getElementById('addBtn');
+const list = document.getElementById('taskList');
 // first we call the html elements by using the DOM tree structure
 // document
 //  └── input (id="taskInput") → has property .value
@@ -9,7 +9,7 @@ const list = document.getElementById('task-list');
 
 addBtn.addEventListener('click', function(){
   const taskText = input.value.trim();
-  if (taskText !== ''){
+  if (taskText === ''){
     console.log("Task can not be empty");
     return;
 
