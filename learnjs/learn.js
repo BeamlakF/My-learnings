@@ -7,6 +7,8 @@ const list = document.getElementById('taskList');
 //  └── button (id="addBtn") → has method .addEventListener()
 //  └── ul (id="taskList") → can hold <li> items
 
+const li = document.createElement('li');
+
 addBtn.addEventListener('click', function(){
   const taskText = input.value.trim();
   if (taskText === ''){
@@ -14,8 +16,6 @@ addBtn.addEventListener('click', function(){
     return;
 
   }
-
-  const li = document.createElement('li');
   li.textContent = taskText;
   list.appendChild(li);
   // DOM Method-Adds the new <li> into the <ul>
@@ -23,6 +23,27 @@ addBtn.addEventListener('click', function(){
 
   console.log (" you typed in:" + taskText);
 });
+
+const doneBtn = document.createElement( 'donebtn');
+doneBtn.textContent = 'Done';
+
+const deleteBtn = document.createElement( 'deletebtn');
+deleteBtn.textContent = 'Delete';
+
+
+li.appendChild(doneBtn);
+li.appendChild(deleteBtn);
+
+list.appendChild(li);
+input.value = '';
+
+doneBtn.addEventListener('click', function(){
+  li.style.textDecoration = 'line-through';})
+
+deleteBtn.addEventListener('click', function(){
+  list.removeChild(li);
+})
+
 // When this button is clicked, please call back this function.
 // function () {
 //   console.log("Button was clicked!");
