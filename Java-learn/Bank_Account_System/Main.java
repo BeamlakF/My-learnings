@@ -1,4 +1,7 @@
-public class Bank{
+import java.util.ArrayList;
+
+
+class Bank{
     private String accountHolder;
     private double balance;
     public Bank( String accountHolder, double balance){
@@ -16,7 +19,7 @@ public class Bank{
 
     public void deposit(double amount){
         balance = balance + amount;
-        System.out.println(amount + " deposited. New balance: " + balance);
+        System.out.println(amount + "deposited. New balance: " + balance);
     }
 
     public void withdrawal(double amount) throws Exception{
@@ -51,5 +54,18 @@ public class Bank{
 
 
         //acc.withdrawal(300); // this line keeps throwing error; why?
+    }
+}
+
+public class Main{
+    public static void main(String[] args) {
+        ArrayList<Bank> accounts = new ArrayList<>();
+
+        accounts.add(new Bank("Chai", 200));
+        accounts.add(new Bank("Lee", 3000));
+
+        for (Bank acc: accounts){
+            System.out.println(acc.getAccountHolder() + "-" + acc.getBalance());
+        }
     }
 }
