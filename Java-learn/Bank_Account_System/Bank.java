@@ -1,9 +1,17 @@
 public class Bank{
-    String accountHolder;
-    double balance;
+    private String accountHolder;
+    private double balance;
     public Bank( String accountHolder, double balance){
         this.accountHolder = accountHolder;
         this.balance = balance;
+    }
+
+    public String getAccountHolder(){
+        return accountHolder;
+    }
+
+    public double getBalance(){
+        return balance;
     }
 
     public void deposit(double amount){
@@ -11,15 +19,16 @@ public class Bank{
         System.out.println(amount + " deposited. New balance: " + balance);
     }
 
-    public void withdrawal(double amount){
+    public void withdrawal(double amount) throws Exception{
+        if (amount > balance) {
+            throw new Exception("Insufficient funds!");
+        }
         
-        if (amount <= balance){
+        else{
             balance -= amount;
             System.out.println(amount + " withdrawn. New balance: " + balance);
         }
-        else{
-            System.out.println("Out of funds");
-        }
+        
     }
 
     public void displayInfo() {
@@ -31,6 +40,6 @@ public class Bank{
         Bank acc = new Bank("Lee", 1000);
 
         acc.deposit(200);
-        acc.withdrawal(300);
+        acc.withdrawal(300); // this line keeps throwing error; why?
     }
 }
