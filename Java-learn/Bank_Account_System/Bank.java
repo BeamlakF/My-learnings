@@ -40,6 +40,16 @@ public class Bank{
         Bank acc = new Bank("Lee", 1000);
 
         acc.deposit(200);
-        acc.withdrawal(300); // this line keeps throwing error; why?
+        try{
+            acc.withdrawal(300);
+        }
+        catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        acc.displayInfo();
+
+
+        //acc.withdrawal(300); // this line keeps throwing error; why?
     }
 }
